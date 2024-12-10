@@ -1,5 +1,5 @@
 # Use python base image
-FROM python:3.12-alpine
+FROM python:3.9-slim
 
 # OCI Labels
 LABEL org.opencontainers.image.authors="Mihir Modi"
@@ -14,7 +14,8 @@ ARG ENVIRONMENT=dev
 # Set the ENV variable using the ARG value
 ENV APP_ENVIRONMENT=${ENVIRONMENT}
 
-#RUN apk add --no-cache python3 py3-pip build-base musl-dev python3-dev
+# Install dependencies and certificates
+RUN apt-get update && apt-get install -y ca-certificates && apt-get clean
 
 # Set working directory and install dependencies
 WORKDIR /app
