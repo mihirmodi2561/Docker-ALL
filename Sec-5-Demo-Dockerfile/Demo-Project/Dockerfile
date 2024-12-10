@@ -20,6 +20,7 @@ WORKDIR /app
 # copy requirements and install dependency
 COPY requirements.txt requirements.txt
 
+RUN pip install --index-url=https://pypi.org/simple --trusted-host=pypi.org
 RUN pip install -r requirements.txt 
 
 # Copy application code
