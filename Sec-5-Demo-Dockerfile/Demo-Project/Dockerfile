@@ -1,5 +1,5 @@
 # Use python base image
-FROM python:3.9-alpine
+FROM python:3.12-alpine
 
 # OCI Labels
 LABEL org.opencontainers.image.authors="Mihir Modi"
@@ -14,7 +14,7 @@ ARG ENVIRONMENT=dev
 # Set the ENV variable using the ARG value
 ENV APP_ENVIRONMENT=${ENVIRONMENT}
 
-RUN apk add --no-cache python3 py3-pip build-base musl-dev python3-dev
+#RUN apk add --no-cache python3 py3-pip build-base musl-dev python3-dev
 
 # Set working directory and install dependencies
 WORKDIR /app
@@ -32,7 +32,7 @@ COPY templates/ ./templates
 RUN echo "Building for env: ${APP_ENVIRONMENT}"
 
 # Start the Flask app
-CMD [ "python3" "app.py" ]
+CMD [ "python" "app.py" ]
 
 
 # Run Dockerfile 
