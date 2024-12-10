@@ -15,7 +15,7 @@ ARG ENVIRONMENT=dev
 ENV APP_ENVIRONMENT=${ENVIRONMENT}
 
 # Install dependencies and certificates
-RUN apt-get update && apt-get install -y ca-certificates && apt-get clean
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
 
 # Set working directory and install dependencies
 WORKDIR /app
@@ -23,18 +23,16 @@ WORKDIR /app
 # copy requirements and install dependency
 COPY requirements.txt requirements.txt
 
-RUN pip install -r requirements.txt 
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY app.py .
-
 COPY templates/ ./templates
 
 RUN echo "Building for env: ${APP_ENVIRONMENT}"
 
 # Start the Flask app
 CMD [ "python" "app.py" ]
-
 
 # Run Dockerfile 
 # docker build -t <abc-build:v1> .
