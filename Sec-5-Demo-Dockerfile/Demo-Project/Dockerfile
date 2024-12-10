@@ -1,5 +1,5 @@
-# Use python base image
-FROM python:3.12-alpine
+# Use python base image with an explicit Alpine version
+FROM python:3.12-alpine3.18
 
 # OCI Labels
 LABEL org.opencontainers.image.authors="Mihir Modi"
@@ -13,8 +13,8 @@ ARG ENVIRONMENT=dev
 # Set the ENV variable using the ARG value
 ENV APP_ENVIRONMENT=${ENVIRONMENT}
 
-# Install dependencies and certificates
-RUN apk add --no-cache ca-certificates build-base
+# Refresh repositories and install dependencies
+RUN apk update && apk add --no-cache ca-certificates build-base
 
 # Set working directory and install dependencies
 WORKDIR /app
