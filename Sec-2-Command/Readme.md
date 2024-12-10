@@ -40,4 +40,9 @@ docker ps -q
 list all the environment variable.
 docker exec -it myapp1 printenv
 
+Docker Tag 
+docker tag myapp1 mihirmodi2561/mynginx:v1
 
+# View Image Labels?
+docker image inspect
+docker image inspect --format = '{{json.Config.Labels}}' myimage

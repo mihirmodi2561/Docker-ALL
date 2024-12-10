@@ -1,0 +1,8 @@
+ARG NGINX_VERSION= 1.26
+
+FROM nginx:${NGINX_VERSION}-alpine-slim
+
+COPY index.html /usr/share/html/nginx
+
+ADD https://github.com/mihirmodi2561/Docker-ALL.git /usr/share/html/nginx
+
