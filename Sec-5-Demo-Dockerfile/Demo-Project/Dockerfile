@@ -33,3 +33,10 @@ RUN echo "Building for environment: ${APP_ENVIRONMENT}"
 
 # Start the Flask app
 CMD ["python", "app.py"]
+
+
+# Image creating --> docker build -t <tag name> .
+# container running --> docker run --name <name> -p 8080:80 -d <image name>
+
+
+# Argument -- docker build --build-arg ENVIRONMENT=qa -t <tag name>

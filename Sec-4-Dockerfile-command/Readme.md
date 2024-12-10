@@ -1,13 +1,13 @@
 # Dockerfile - COPY vs ADD
 
-# What is COPY instruction in Dockerfile?
+## What is COPY instruction in Dockerfile?
 - The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the image at the path <dest>
 - Files and directories can be copied from the ⚫ build context
     • build stage
     • named context 
     • an image
 
-# What is ADD instruction in Dockerfile?
+## What is ADD instruction in Dockerfile?
 - The ADD instruction copies new files or directories from <src> and adds them to the filesystem of the image at the path <dest>
 - Files and directories can be copied from the 
     • build context
@@ -31,7 +31,7 @@ Add: fetch from URL Demo
   URL or Git Release
 
 
-# Dockerfile - ARD Instruction
+# Dockerfile - ARG Instruction
 
 What is ARG instruction in Dockerfile?
 - Define a variable that users can pass at build-time to the builder with
@@ -45,24 +45,21 @@ FROM nginx:${NGINX_VERSION}-alpine-slim
 
 COPY index.html/usr/share/html/nginx
 
-# Dockerfile - RUN and EXPOSE Instruction
+## Dockerfile - RUN and EXPOSE Instruction
 
-# Run Instruction:
+## Run Instruction:
 - Will execute any commands to create a new layer on top of the current image.
 
 FROM nginx:alpine-slim
 
-# Copy all Nginx configuration files from nginx-conf directory
+## Copy all Nginx configuration files from nginx-conf directory
 COPY nginx-conf/*.conf /etc/nginx/conf.d/
 
-# Copy all HTML files from nginx-html directory
+## Copy all HTML files from nginx-html directory
 COPY nginx-html/*.html /usr/share/nginx/html/
 
-# Install curl using RUN
+## Install curl using RUN
 RUN apk --no-cache add curl
 
-# Expose the ports 8081, 8082, 8083 (default port 80 already exposed from base nginx image)
-EXPOSE 8081 8082 8083
-
-# EXPOSE Instruction: 
+## EXPOSE Instruction: 
 - Informs Docker that the container listens on the specified network ports at runtime. 

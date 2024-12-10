@@ -35,3 +35,25 @@ Syntax
 CMD ["executable", "param1", "param2"]
 CMD ["param1",  "param2"]
 CMD command param1 param2
+
+To start nginx iin docker container
+CMD ["nginx", "-g", "daemon off;" ]
+
+## ENTRYPOINT Instruction
+
+- An ENTRYPOINT allows you to configure a container that will run as an executable.
+- It is useful for setting up a container that runs a specific command or application.
+
+![ENTRYPOINT Vs CMD](image.png)
+
+**- Append Arguments to Entrypoint**
+Appending Modi in Entery Point
+docker run --name <entrypont> <Image Name> Modi
+
+Output 
+Mihir Modi
+
+# Scenario: 2 IMPORTANT
+ Whenever in CMD value pass that time if in command line through any value pass then it can override the value but **(Override)**
+
+ If in ENTRYPOINT value should be Append **(It's going to add)**

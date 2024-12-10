@@ -37,21 +37,21 @@ Episode - 2
 
 Docker - Terminology
 
-Docker Daemon:
+# Docker Daemon:
 The docker daemon listens for docker API requests and manages Docker objects such as images, containers, networks, and volumes
 
-Docker Client:
+# Docker Client:
  - Can be present on either docker host or any other machines.
  - through docker client we can connect to docker daemon.
 
-Docker Images:
+# Docker Images:
  - read-only template with instructions for creating a docker container.
  - we want to add custom configs in nginx, then we take base nginx image and modify as per our need. 
 
-Docker Containers:
+# Docker Containers:
  - A container is a runnable instance of an image.
  - we can create start stop, move or delete a container using the docker API or CLI.
 
-Docker Hub:
+# Docker Hub:
  - Register images.
  - we can pull or push our custom images.(Kind of github )
