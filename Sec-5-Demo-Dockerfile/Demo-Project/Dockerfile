@@ -1,5 +1,5 @@
 # Use python base image
-FROM python:alpine:3.21 
+FROM python:3.12-alpine
 
 # OCI Labels
 LABEL org.opencontainers.image.authors="Mihir Modi"
@@ -8,11 +8,11 @@ LABEL org.opencontainers.image.description="A Dockerfile demo illustrating the d
 LABEL org.opencontainers.image.version="1.0"
 
 # Define build-time argument for environment (defaults to "dev")
-ARG ENVIRONMENT = dev
+ARG ENVIRONMENT=dev
 
 #Runtime 
 # Set the ENV variable using the ARG value
-ENV APP_ENVIRONMENT = ${ENVIRONMENT}
+ENV APP_ENVIRONMENT=${ENVIRONMENT}
 
 # Set working directory and install dependencies
 WORKDIR /app
@@ -31,3 +31,8 @@ RUN echo "Building for env: ${APP_ENVIRONMENT}"
 
 # Start the Flask app
 CMD [ "python" "app.py" ]
+
+
+# Run Dockerfile 
+# docker build -t <abc-build:v1> .
+# docker run --name <> -p 8080:80 -d <abc-build:v1>
