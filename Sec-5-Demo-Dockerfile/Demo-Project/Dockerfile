@@ -14,13 +14,14 @@ ARG ENVIRONMENT=dev
 # Set the ENV variable using the ARG value
 ENV APP_ENVIRONMENT=${ENVIRONMENT}
 
+RUN apk add --no-cache python3 py3-pip build-base musl-dev python3-dev
+
 # Set working directory and install dependencies
 WORKDIR /app
 
 # copy requirements and install dependency
 COPY requirements.txt requirements.txt
 
-RUN pip install --index-url=https://pypi.org/simple --trusted-host=pypi.org
 RUN pip install -r requirements.txt 
 
 # Copy application code
@@ -31,7 +32,7 @@ COPY templates/ ./templates
 RUN echo "Building for env: ${APP_ENVIRONMENT}"
 
 # Start the Flask app
-CMD [ "python" "app.py" ]
+CMD [ "python3" "app.py" ]
 
 
 # Run Dockerfile 
