@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.title="Demo: Populate Docker Volumes with Contain
 LABEL org.opencontainers.image.description="A Dockerfile demo illustrating how to populate Docker volumes using containers and serving static content with NGINX."
 LABEL org.opencontainers.image.version="1.0"
 
-COPY ./static-content /use/share/nginx/html
+COPY ./static-content/ /use/share/nginx/html
 
 # Populate a Volume Using COntainer
 
