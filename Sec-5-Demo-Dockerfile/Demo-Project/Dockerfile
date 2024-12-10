@@ -1,5 +1,5 @@
 # Use python base image
-FROM python:3.9-slim
+FROM python:3.12-alpine
 
 # OCI Labels
 LABEL org.opencontainers.image.authors="Mihir Modi"
@@ -10,29 +10,29 @@ LABEL org.opencontainers.image.version="1.0"
 # Define build-time argument for environment (defaults to "dev")
 ARG ENVIRONMENT=dev
 
-#Runtime 
 # Set the ENV variable using the ARG value
 ENV APP_ENVIRONMENT=${ENVIRONMENT}
 
 # Install dependencies and certificates
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache ca-certificates build-base
 
 # Set working directory and install dependencies
 WORKDIR /app
 
-# copy requirements and install dependency
+# Copy requirements and install Python dependencies
 COPY requirements.txt requirements.txt
-
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY app.py .
 COPY templates/ ./templates
 
+# Build-time log
 RUN echo "Building for env: ${APP_ENVIRONMENT}"
 
 # Start the Flask app
-CMD [ "python" "app.py" ]
+CMD ["python3", "app.py"]
+
 
 # Run Dockerfile 
 # docker build -t <abc-build:v1> .
