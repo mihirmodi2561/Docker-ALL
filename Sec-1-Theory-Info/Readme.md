@@ -1,4 +1,3 @@
-# hello
 Episode - 1
 
 Traditional Approach 
